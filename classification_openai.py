@@ -3,6 +3,8 @@ import os
 from dotenv import load_dotenv
 from openai import OpenAI
 from openai import OpenAIError
+import google.generativeai as generativeai
+
 import pandas as pd
 import json
 import time
@@ -19,7 +21,8 @@ openai_api_key = os.getenv('OPENAI_API_KEY')
 client = OpenAI(api_key=openai_api_key)
 
 # 파일 경로 설정
-path= r'c:\Users\asia\Desktop\ai_project\zigzag\dataset\긴소매티셔츠 copy'
+path= r'C:\Users\asia\Desktop\work\긴소매티셔츠 copy\긴소매_p1_106711935.csv'
+print("파일 존재 여부:", os.path.exists(path))
 
 # DataFrame 생성
 df = pd.read_csv(path)

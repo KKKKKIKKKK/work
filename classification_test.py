@@ -31,11 +31,23 @@ print(f'컬럼 이름 : {columns}')
 review_data = df[['옵션1', '옵션2', '리뷰내용']].dropna()
 
 ### 감성 분석 및 근거가 되는 keyword 추출 함수 정의
-def analyze_review(option1_value, option2_value, review_value):   
-    # prompt 생성
+def analyze_review(option1_value, option2_value, review_value):
+    """
+    리뷰 텍스트를 분석하여 긍정 또는 부정을 분류하고, 판단 근거가 되는 키워드를 추출하여 JSON 형식으로 저장하는 함수.
+    
+    Args:
+        option1_value (str): 옵션1 값.
+        option2_value (str): 옵션2 값.
+        review_value (str): 리뷰 내용.
+
+    Returns:
+        dict: 분석 결과 JSON 데이터.
+    """
+    # Prompt 생성
     prompt = f"""
-    {review_value}    
-    당신은 텍스트 감정분석 전문가입니다. 다음 질문에 정확하게 답변해야 합니다. 질문 : 다음 텍스트는 의류에 관한 소비자 리뷰입니다. 해당 리뷰의 내용이 긍정인지 부정인지를 분류를 하고, 판단의 근거가 되는 키워드들을 추출하여 JSON 파일로 저장해 주세요.
+    당신은 텍스트 감정분석 전문가입니다. 다음 질문에 정확하게 답변해야 합니다. 
+    질문 : 다음 텍스트는 의류에 관한 소비자 리뷰입니다. 해당 리뷰의 내용이 긍정인지 부정인지를 분류를 하고, 
+    판단의 근거가 되는 키워드들을 추출하여 JSON 파일로 저장해 주세요.
 
     리뷰내용: {review_value}
     옵션1: {option1_value}
