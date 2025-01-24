@@ -126,7 +126,7 @@ def process_multiple_texts(text_list):
     return results
 
 # 여러 텍스트 처리
-all_results = process_multiple_texts(review_text[:30])
+all_results = process_multiple_texts(review_text[:10])
 
 # 최종 결과 출력
 print("결과 저장 중...")
